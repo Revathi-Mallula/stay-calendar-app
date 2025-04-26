@@ -40,7 +40,7 @@ RUN php artisan view:cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Expose port 80 for the Apache server
-EXPOSE 80
+EXPOSE 10000
 
 # Start the Apache server
-CMD ["apache2-foreground"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
