@@ -3,6 +3,8 @@ services:
     name: Stay Calendar
     env: php
     buildCommand: |
+      nvm install 18
+      nvm use 18
       composer install --optimize-autoloader --no-dev
       npm install
       npm run build
@@ -14,7 +16,7 @@ services:
       - key: APP_ENV
         value: production
       - key: APP_KEY
-        value: base64:7lmfb33StfqM21HQJUdtpJD6SK/UP+3aqc/4I03pffQ= # Replace with your actual APP_KEY
+        value: base64:7lmfb33StfqM21HQJUdtpJD6SK/UP+3aqc/4I03pffQ=
       - key: APP_DEBUG
         value: false
       - key: APP_URL
