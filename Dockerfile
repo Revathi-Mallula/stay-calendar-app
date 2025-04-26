@@ -39,8 +39,8 @@ RUN php artisan view:cache
 # Set permissions for Laravel storage and cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Expose port 80 for the Apache server
+# Expose port 10000 for Render
 EXPOSE 10000
 
-# Start the Apache server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=80"]
+# Start the Laravel application
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
