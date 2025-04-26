@@ -3,6 +3,9 @@ services:
     name: Stay Calendar
     env: php
     buildCommand: |
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
       nvm install 18
       nvm use 18
       composer install --optimize-autoloader --no-dev
