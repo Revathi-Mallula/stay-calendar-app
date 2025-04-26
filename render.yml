@@ -7,11 +7,11 @@ services:
       - key: APP_ENV
         value: production
       - key: APP_KEY
-        value: base64:7lmfb33StfqM21HQJUdtpJD6SK/UP+3aqc/4I03pffQ=
+        value: base64:your-app-key-here
       - key: APP_DEBUG
         value: false
       - key: APP_URL
-        value: https://stay-calendar.onrender.com
+        value: https://your-app-name.onrender.com
       - key: LOG_CHANNEL
         value: stderr
       - key: SESSION_DRIVER

@@ -1,4 +1,4 @@
-# Use an official PHP image with Apache and Composer pre-installed
+# Use an official PHP image with Apache pre-installed
 FROM php:8.2-apache
 
 # Install system dependencies
@@ -18,11 +18,20 @@ RUN apt-get update && apt-get install -y \
 # Enable Apache mod_rewrite for Laravel
 RUN a2enmod rewrite
 
+# Install Composer globally
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Verify Composer installation
+RUN composer --version
+
 # Set the working directory
 WORKDIR /var/www/html
 
-# Copy project files to the container
+# Copy all application files into the container
 COPY . .
+
+# Configure Git to trust the working directory
+RUN git config --global --add safe.directory /var/www/html
 
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev
