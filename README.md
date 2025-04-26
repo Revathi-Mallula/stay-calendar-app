@@ -1,61 +1,77 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Project Notes: Stay Calendar
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ File Structure
+Frontend
+•	Components
+o	Header.vue: Displays the app header with "Add Booking" option.
+o	DateNavigation.vue: Calendar navigation controls.
+o	CalendarTable.vue: Displays calendar with room bookings.
+o	BookingModal.vue: Modal for viewing and editing booking details.
+•	Store
+o	bookings.js: Pinia store managing bookings, rooms, and current date.
+o	bookingsData.js: Contains sample booking data.
+•	Styling
+o	app.css: Global styles with Tailwind CSS integration.
+Backend
+•	Laravel
+o	Provides API endpoints and server setup.
+o	Includes default Laravel structure: migrations, routes, and controllers.
 
-## About Laravel
+ Key Files Overview
+•	CalendarTable.vue
+o	Displays calendar view.
+o	Uses dayjs and isBetween to match bookings to dates.
+o	Opens the Booking Modal when a booking is clicked.
+•	BookingModal.vue
+o	Shows and allows editing of booking details.
+o	Dynamically recalculates total amount if stay duration changes.
+•	DateNavigation.vue
+o	Provides controls for navigating dates.
+o	"Today" button resets calendar to current date.
+•	bookings.js
+o	Manages booking, rooms, and current date state.
+o	Includes actions like updating bookings and recalculating totals.
+•	bookingsData.js
+o	Stores sample booking data including:
+	Room
+	Guest
+	Check-in and Check-out dates
+	Total amount
+	Paid/Due amounts
+	Booking status
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+ Technologies Used
+•	Frontend
+o	Vue 3 — UI framework
+o	Pinia — State management
+o	Day.js — Date manipulation
+o	Tailwind CSS — Styling
+•	Backend
+o	Laravel — Backend framework and server
+•	Build Tools
+o	Vite — Fast development server and build tool
+________________________________________
+ How It Works
+•	Calendar Initialization
+o	The calendar starts from today's date using dayjs() in bookings.js.
+•	Booking Display
+o	Bookings are rendered onto the calendar.
+o	Clicking a booking opens detailed view in BookingModal.vue.
+•	Dynamic Total Amount
+o	Total amount updates automatically in BookingModal.vue based on updated check-in/check-out dates.
+•	Date Navigation
+o	Users can easily navigate between dates or reset the calendar to today using DateNavigation.vue.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Setup Instructions
+Project Setup
+composer create-project Laravel/laravel Laravel-vue
+npm install --save vue@next
+npm install --save-dev vue-loader@next
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+Run the Development Server
+npm run dev
+php artisan serve
+Access the Application
+Open your browser and navigate to:
+http://localhost:8000
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
